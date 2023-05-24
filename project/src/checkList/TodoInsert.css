@@ -1,0 +1,24 @@
+.TodoInsert {
+  display: flex;
+}
+
+input {
+  background-color: none;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  background-color: rgb(58, 84, 180);
+
+  width: 95%;
+  height: 50px;
+}
+
+input::placeholder {
+  padding-left: 10px;
+  color: rgb(127, 126, 126);
+}
+
+.TodoInsertButton {
+  width: 5%;
+}
