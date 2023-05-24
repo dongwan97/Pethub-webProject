@@ -5,8 +5,6 @@ import 로고 from "./assets/logo2(2).png";
 import 개5 from "./assets/개5.png";
 import TodoInsert from "./checkList/TodoInsert";
 import TodoList from "./checkList/TodoList";
-import PicInsert from "./forPicture/PicInsert";
-import MenuBar from "./Menubar";
 
 function PetInfo() {
   const name = localStorage.getItem("name");
@@ -178,7 +176,6 @@ function PetInfo() {
         </div>
         <div id="main_3">
           <h3 style={{ color: "black" }}>사진이 들어갈거임</h3>
-          <PicInsert />
         </div>
       </div>
     </div>
