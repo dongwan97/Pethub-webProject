@@ -1,38 +1,38 @@
 import 로고 from "./assets/logo2(2).png";
+import { Outlet } from "react-router";
+import "./Menubar.css";
+import { Link } from "react-router-dom";
 
 function MenuBar() {
+  // const navigate = useNavigate();
+  // <button onClick={() => navigate(-1)}>뒤로가기</button>;
+
   return (
     <div id="header_container">
       <div id="header">
         <nav id="nav">
           <div id="header_left">
-            <img src={로고} id="dog1" />
-            <div id="header_title">Pet hub</div>
+            <Link to="/">
+              <img src={로고} id="dog1" />
+            </Link>
+            <Link to="/">
+              <div id="header_title">Pet hub</div>
+            </Link>
           </div>
           <ul id="navbar_menu">
             <li>
-              <a href="blank.com" id="a_home">
-                Home
-              </a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="blank.com">about us</a>
+              <Link to="/PetInfo">my pet</Link>
             </li>
             <li>
-              <a href="blank.com">기획서</a>
-            </li>
-            <li>
-              <a href="blank.com">my pet</a>
-            </li>
-            <li>
-              <a href="blank.com">동물병원</a>
-            </li>
-            <li>
-              <a href="blank.com">장터게시판</a>
+              <Link to="/blank.com">동물병원</Link>
             </li>
           </ul>
         </nav>
       </div>
+      <Outlet />
     </div>
   );
 }
