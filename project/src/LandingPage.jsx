@@ -5,8 +5,13 @@ import 개6 from "./assets/개6.png";
 import 개7 from "./assets/개7.png";
 import 개8 from "./assets/개8.png";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 function LandingPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="header_container">
       <div id="main">
