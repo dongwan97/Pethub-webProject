@@ -1,13 +1,16 @@
 import { useState } from "react";
 import "./InformationForm.css";
 import 로고 from "./assets/logo2(2).png";
+import { useNavigate } from "react-router";
 
 function InformationForm() {
-  const [name, setName] = useState("");
-  const [species, setSpecies] = useState("");
-  const [gender, setGender] = useState("");
-  const [weight, setWeight] = useState("");
-  const [age, setAge] = useState("");
+  const navigate = useNavigate();
+
+  const [name, setName] = useState(localStorage.getItem("name") || "");
+  const [species, setSpecies] = useState(localStorage.getItem("species") || "");
+  const [gender, setGender] = useState(localStorage.getItem("gender") || "");
+  const [weight, setWeight] = useState(localStorage.getItem("weight") || "");
+  const [age, setAge] = useState(localStorage.getItem("age") || "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,11 +30,11 @@ function InformationForm() {
     localStorage.setItem("age", age);
 
     // 입력된 정보 초기화
-    setName("");
-    setSpecies("");
-    setGender("");
-    setWeight("");
-    setAge("");
+    // setName("");
+    // setSpecies("");
+    // setGender("");
+    // setWeight("");
+    // setAge("");
   };
 
   return (
@@ -85,7 +88,7 @@ function InformationForm() {
             ></input>
           </div>
         </div>
-        <button type="submit" className="button1">
+        <button type="submit" className="button1" onClick={() => navigate(-1)}>
           저장하기
         </button>
       </form>

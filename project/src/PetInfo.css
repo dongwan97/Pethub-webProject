@@ -1,9 +1,42 @@
+.PetProfile {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  font-size: 31px;
+  color: white;
+  font-weight: bold;
+
+  top: 101px;
+  left: 26%;
+  position: relative;
+}
+
+.tmp {
+  position: relative;
+  z-index: 1;
+}
+
 .PetInfo_Container {
   display: flex;
   flex-direction: column;
 }
 
-.top {
+.dogProfile_c {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.dogProfile {
+  width: 105%;
+}
+
+/* .top {
   background-color: rgb(251, 241, 229);
   display: flex;
   flex-direction: column;
@@ -17,15 +50,15 @@
 
   width: 100vw;
   height: 90vh;
-}
+} */
 
-.top_title {
+/* .top_title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
-}
+} */
 
 .dog5 {
   width: 300px;
@@ -33,18 +66,18 @@
 }
 
 .button2 {
-  width: 400px;
-  height: 35px;
+  width: 100px;
+  height: 30px;
   color: white;
-  font-weight: bold;
-  font-size: 15px;
-  background-color: rgb(52, 21, 174);
+  font-size: 10px;
+  background-color: rgb(48, 47, 81);
   cursor: pointer;
   border: none;
 }
 
 .button2:hover {
-  background-color: rgb(109, 91, 174);
+  background-color: white;
+  color: black;
 }
 
 .main {
@@ -68,7 +101,7 @@
   align-items: center;
   flex-direction: row;
   gap: 30px;
-
+  margin-top: 35px;
   width: 70%;
   color: black;
   border-radius: 15px;
@@ -122,8 +155,94 @@
   font-weight: bold;
 }
 
+.main_3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+  gap: 15px;
+}
+
+.main_3_title {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(58, 84, 180);
+}
+
+.main_3_p {
+  font-size: 17px;
+  text-align: center;
+}
+
+.main_3_p2 {
+  color: rgb(58, 84, 180);
+  font-weight: bold;
+}
+
 .checkbox_container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.ChartWarning {
+  position: relative;
+  top: -255px;
+  text-align: center;
+  font-size: 17px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.WeightFormButton {
+  width: 90px;
+  height: 30px;
+  background-color: rgb(58, 84, 180);
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10%;
+}
+
+#main_5 {
+  width: 100vw;
+  background-color: rgb(58, 84, 180);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_5_title {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin-top: 25px;
+}
+
+.dog9 {
+  position: relative;
+  width: 13rem;
+  left: 45px;
+}
+
+.main_5_2 {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: -96px;
+  align-items: center;
+}
+
+.main_5_2_p {
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 100;
 }

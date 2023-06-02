@@ -1,0 +1,42 @@
+.errorBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  background-color: #b3aaaa;
+  height: 100vh;
+}
+
+.dog10 {
+  width: 25rem;
+  padding-right: 25px;
+}
+
+.errorP {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.errorP1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.errorList {
+  padding-inline-start: 1.5rem;
+  line-height: 2;
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.errorButton {
+  width: 100%;
+}
+
+.errorButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
