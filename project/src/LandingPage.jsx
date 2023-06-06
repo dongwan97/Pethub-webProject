@@ -6,6 +6,9 @@ import 개7 from "./assets/개7.png";
 import 개8 from "./assets/개8.png";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import PageInfo2 from './PageInfo2';
+import PageInfo3 from './PageInfo3';
+import PageInfo4 from './PageInfo4';
 
 function LandingPage() {
   useEffect(() => {
@@ -86,6 +89,9 @@ function LandingPage() {
           </div>
         </div>
       </div>
+      <PageInfo2 />
+      <PageInfo3 />
+      <PageInfo4 />
     </div>
   );
 }
