@@ -1,8 +1,14 @@
 .tmp1 {
   width: 100vw;
-  height: 100vh;
+  margin-top: 100px;
   display: flex;
   font-size: 70px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.proposal-image {
+  width: 500px;
+  height: 500px;
 }
