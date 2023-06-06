@@ -1,0 +1,8 @@
+.tmp1 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  font-size: 70px;
+  justify-content: center;
+  align-items: center;
+}

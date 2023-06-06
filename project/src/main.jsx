@@ -9,6 +9,7 @@ import MenuBar from "./Menubar.jsx";
 import MapPage from './MapPage.jsx';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./404/404.jsx";
+import AboutUs from "./aboutus/AboutUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "WeightForm",
         element: <WeightForm />,
+      },
+      {
+        path: "AboutUs",
+        element: <AboutUs />,
       },
       {
         path: "/",

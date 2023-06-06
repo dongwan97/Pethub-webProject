@@ -24,6 +24,9 @@ function MenuBar() {
               <Link to="/">Home</Link>
             </li>
             <li>
+              <Link to="/AboutUs">About us</Link>
+            </li>
+            <li>
               <Link to="/PetInfo">my pet</Link>
             </li>
             <li>
