@@ -6,6 +6,7 @@ import PetInfo from "./PetInfo.jsx";
 import InformationForm from "./InformationForm.jsx";
 import WeightForm from "./chart/WeightForm.jsx";
 import MenuBar from "./Menubar.jsx";
+import MapPage from './MapPage.jsx';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./404/404.jsx";
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "map",
+        element: <MapPage/>,
       },
     ],
   },

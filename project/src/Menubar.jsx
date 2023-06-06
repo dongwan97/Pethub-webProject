@@ -27,7 +27,7 @@ function MenuBar() {
               <Link to="/PetInfo">my pet</Link>
             </li>
             <li>
-              <Link to="/blank.com">동물병원</Link>
+              <Link to="/map">동물병원</Link>
             </li>
           </ul>
         </nav>
