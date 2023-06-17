@@ -8,6 +8,8 @@ import RandomPhrase from "./pharse/RandomPharse";
 import 개9 from "./assets/개9.png";
 import { Link } from "react-router-dom";
 import 강아지프로필 from "./assets/강아지프로필.png";
+import 강아지프로필2 from "./assets/강아지프로필2.jpg"; // 수정된 이미지 파일 경로
+import Carousel from "./Carousel";
 
 function PetInfo() {
   const name = localStorage.getItem("name");
@@ -69,12 +71,34 @@ function PetInfo() {
     [todos]
   );
 
+  const [profileIndex, setProfileIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProfileIndex((prevIndex) => (prevIndex + 1) % profileImages.length);
+    }, 2000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const profileImages = [강아지프로필, 강아지프로필2];
+
   return (
     <div className="PetInfo_container">
       <div className="dogProfile_c">
-        <img src={강아지프로필} className="dogProfile" />
+        <Carousel>
+          {profileImages.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              className="dogProfile"
+              alt={`강아지 프로필 ${index + 1}`}
+            />
+          ))}
+        </Carousel>
       </div>
-
       <div className="tmp">
         {!name ? (
           <div className="PetProfile">
