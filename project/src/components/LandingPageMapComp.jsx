@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './PageInfo2.css'
-import image3 from './assets/3.png'
+import image3 from '../assets/3.png'
 
 
 function PageInfo4() {

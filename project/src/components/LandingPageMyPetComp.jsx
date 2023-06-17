@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import './PageInfo2.css'
-import image1 from './assets/1.png'
-import image2 from './assets/2.png'
+import image1 from '../assets/1.png'
+import image2 from '../assets/2.png'
 
-function PageInfo2() {
+function LandingPageMyPetComp() {
   const sectionRef = useRef(null);
   const descriptionRef = useRef(null);
   const imageRefs = useRef([]);
@@ -56,4 +56,4 @@ function PageInfo2() {
 
   )
 }
-export default PageInfo2;
+export default LandingPageMyPetComp;
