@@ -6,9 +6,9 @@ import 개7 from "./assets/개7.png";
 import 개8 from "./assets/개8.png";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import LandingPageMyPetComp from './components/LandingPageMyPetComp';
-import LandingPagePetDiaryComp from './components/LandingPagePetDiaryComp';
-import LandingPageMapComp from './components/LandingPageMapComp';
+import LandingPageMyPetComp from "./components/LandingPageMyPetComp";
+import LandingPagePetDiaryComp from "./components/LandingPagePetDiaryComp";
+import LandingPageMapComp from "./components/LandingPageMapComp";
 
 function LandingPage() {
   useEffect(() => {
@@ -28,7 +28,13 @@ function LandingPage() {
           </Link>
         </div>
         <Link to="/PetInfo">
-          <img src={개} id="dog2" width="500px" height="500px" />
+          <img
+            src={개}
+            id="dog2"
+            width="500px"
+            height="500px"
+            className="LandingPage_bigPicture"
+          />
         </Link>
       </div>
       <div className="PContainer">

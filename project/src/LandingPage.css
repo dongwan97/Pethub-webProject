@@ -7,6 +7,10 @@ body {
   height: 100vh;
 }
 
+.LandingPage_bigPicture:hover {
+  opacity: 0.7;
+}
+
 #dog1 {
   width: 50px;
   height: auto;
