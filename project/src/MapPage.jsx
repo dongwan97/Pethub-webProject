@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Map,MapMarker} from 'react-kakao-maps-sdk'
 import "./MapPage.css";
+import { startTransition } from "react";
 
 const { kakao } = window;
 
@@ -15,7 +16,6 @@ function MapPage() {
       try {
         const coordinate = await getCurrentCoordinate();
         setCurrentCoordinate(coordinate);
-        console.log(1)
       } catch (error) {
         console.log(error);
       }
@@ -30,10 +30,9 @@ function MapPage() {
 
     var options = {   // 키워드 검색 시 사용할 options으로 location: currentCoordinate를 통해 현재 위치 주위에서 검색 가능하게
       location: currentCoordinate,
-      radius: 2000,
+      radius: 1800,
       sort: kakao.maps.services.SortBy.DISTANCE,
     };
-    console.log(2)
 
     ps.keywordSearch("동물병원", (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {
@@ -52,7 +51,9 @@ function MapPage() {
             content: {
               place_name:data[i].place_name,
               address_name:data[i].address_name,
+              road_address_name:data[i].road_address_name,
               phone:data[i].phone,
+              place_url:data[i].place_url,
             }
           })
           // @ts-ignore
@@ -64,6 +65,7 @@ function MapPage() {
         map.setBounds(bounds)
       }
     }, options)
+
   }, [map, currentCoordinate])
 
   const getCurrentCoordinate = async () => {  
@@ -83,46 +85,38 @@ function MapPage() {
       }
     });
   };  
-  markers.map((marker) => {
-    console.log(marker.content.place_name)
-  })
+
 
   return (
-    <div className="whole_container" style={{display:"flex", flexDirection:"row"}}>
-      <div style={{width:"30%", height:"600px", margin:"30px"}}>
-        <div><h1 style={{paddingTop:"0"}}>동물병원 목록</h1></div>
-        <div style={{height:"70%", overflow:"scroll"}}>
+    <div className="whole_container" style={{}}>
+      <div style={{width:"22%", height:"90%", margin:"30px 30px 0px 30px", zIndex:"100",position:"absolute"}}>
+
+        <div style={{padding:"5px 0px 5px 0px",background:"rgba(255, 255, 255, 1)", textAlign:"center",borderRadius:"10px 10px 0px 0px",borderBottom:"2px solid"}}><h2 style={{margin:"0"}}>동물병원 목록</h2></div>
+
+        <div style={{height:"85%", overflow:"scroll", backgroundColor:"rgba(255, 255, 255, 1)",borderRadius:"0px 0px 10px 10px"}}>
         {markers.map((marker) => (
-          <p onClick={() => setInfo(marker)}>{marker.content.place_name}</p>
+          <div className="map-list" style={{borderBottom:"1px solid gray", marginLeft:"10px"}} onClick={() => setInfo(marker)}>
+            <h3>{marker.content.place_name}</h3>
+            <p className="map-link" onClick={() => window.open(`${marker.content.place_url}`,"_blank")} style={{cursor:"pointer", color:"#3d75cc"}}>{marker.content.place_url}</p>
+            <p>{marker.content.address_name}</p>
+            <p style={{color:"#8a8a8a",padding:"0px 0px 0px 26px", backgroundImage:`url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png")`, backgroundRepeat:"no-repeat"}}> {marker.content.road_address_name}</p>
+            <p style={{color:"#009900"}}>{marker.content.phone}</p>
+            </div>
         ))}
         </div>
+
       </div>
-
-
         
-
-
-      <br/>
-      <div style={{width:"70%", display:"flex", flexDirection:"column"}}>
-      {info && info.content !== "" ? (  // 마커를 선택하기 전에는 hi 표시, 마커 선택 후에는 해당하는 동물병원 이름, 주소 표시
-        <div className="map_description">
-        <h1>{info.content.place_name}</h1>
-        {info.content.address_name}<br/>
-        {info.content.phone}
-      </div>
-      ) : (
-        <div className="map_description">병원을 선택해주세요</div>
-      )}
+      <div style={{width: "100%", height: "100%", zIndex:"10",position:"absolute"}}>
       <Map // 로드뷰를 표시할 Container
         center={{
           lat: 37.566826,
           lng: 126.9786567,
         }}
         style={{
-          width: "80%",
-          height: "400px",
-          borderRadius: "15px",
-          marginLeft:"0"
+          width: "100%",
+          height: "100%",
+          marginLeft:"0",
         }}
         level={3}
         onCreate={setMap}

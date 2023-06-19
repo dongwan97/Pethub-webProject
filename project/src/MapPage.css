@@ -1,14 +1,14 @@
 
 .whole_container{
-  margin: auto;
-  margin-top: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin-top: 80px;
+  margin-bottom: 0px;
 }
 
-.map_description{
-  display: flex;
-  
+
+.map-link:hover{
+  text-decoration: underline;
+}
+
+.map-list:hover{
+  cursor:pointer;
 }
