@@ -32,6 +32,9 @@ function MenuBar() {
             <li>
               <Link to="/map">동물병원</Link>
             </li>
+            <li>
+              <Link to="/QAPage">자주묻는질문</Link>
+            </li>
           </ul>
         </nav>
       </div>

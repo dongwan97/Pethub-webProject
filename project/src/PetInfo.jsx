@@ -8,7 +8,7 @@ import RandomPhrase from "./pharse/RandomPharse";
 import 개9 from "./assets/개9.png";
 import { Link } from "react-router-dom";
 import 강아지프로필 from "./assets/강아지프로필.png";
-import 강아지프로필2 from "./assets/강아지프로필2.jpg"; // 수정된 이미지 파일 경로
+import 강아지프로필2 from "./assets/강아지프로필3.jpg"; // 수정된 이미지 파일 경로
 import Carousel from "./Carousel";
 
 function PetInfo() {
@@ -248,9 +248,6 @@ function PetInfo() {
             <RandomPhrase />
             <div className="main_5_2">
               <img src={개9} className="dog9" />
-              <div className="main_5_2_p">
-                새로고침하여 새로운 띵언을 확인해보세요 !
-              </div>
             </div>
           </div>
         </div>
