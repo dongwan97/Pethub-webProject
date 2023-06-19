@@ -40,7 +40,6 @@ function LandingPageMyPetComp() {
   return (
     <div className="home-main-section1" ref={sectionRef}>
       <div className="section1-image">
-        <h2>펫정보</h2>
         <div className='first-image'><img ref={(el) => (imageRefs.current[0] = el)} src={image1} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }} /></div>
         <div className='second-image'><img ref={(el) => (imageRefs.current[1] = el)} src={image2} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }} /></div>
         

@@ -4,6 +4,8 @@ import 기획서2 from "../assets/기획서이미지/기획서2.png";
 import 기획서3 from "../assets/기획서이미지/기획서3.png";
 import 기획서4 from "../assets/기획서이미지/기획서4.png";
 import 기획서5 from "../assets/기획서이미지/기획서5.png";
+import 기획서6 from "../assets/기획서이미지/기획서6.png";
+import 기획서7 from "../assets/기획서이미지/기획서7.png";
 import 팀원1 from "../assets/member1.jpg";
 import 팀원2 from "../assets/member2.jpg";
 
@@ -67,11 +69,17 @@ function AboutUs() {
           </div>
         </div>
       </div>
+      <div>
+        <br/>
+        &lt;프로젝트 기획서&gt;
+      </div>
       <img className="proposal-image" src={기획서1} />
       <img className="proposal-image" src={기획서2} />
       <img className="proposal-image" src={기획서3} />
       <img className="proposal-image" src={기획서4} />
       <img className="proposal-image" src={기획서5} />
+      <img className="proposal-image" src={기획서6} />
+      <img className="proposal-image" src={기획서7} />
     </div>
   );
 }
