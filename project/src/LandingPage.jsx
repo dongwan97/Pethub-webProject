@@ -68,28 +68,28 @@ function LandingPage() {
             </Link>
           </div>
           <div className="ServicesDetail">
-            <Link to="/PetInfo">
+            <Link to="/map">
               <img src={개7} className="ServicesImg" />
-            </Link>
-            <div className="SerImgTitle">다이어리</div>
-            <div className="SerImgDes">
-              행동일지를 기록하면서,
-              <br /> 동물의 상태를 추적하세요.
-            </div>
-            <Link to="/PetInfo">
-              <button className="PetInfoButton">visit now</button>
-            </Link>
-          </div>
-          <div className="ServicesDetail">
-            <Link to="/blank">
-              <img src={개8} className="ServicesImg" />
             </Link>
             <div className="SerImgTitle">동물병원</div>
             <div className="SerImgDes">
               위급상황을 대비해서,
               <br /> 가까운 병원을 미리 알아두세요.
             </div>
-            <Link to="/blank">
+            <Link to="/map">
+              <button className="PetInfoButton">visit now</button>
+            </Link>
+          </div>
+          <div className="ServicesDetail">
+            <Link to="/QAPage">
+              <img src={개8} className="ServicesImg" />
+            </Link>
+            <div className="SerImgTitle">질문게시판</div>
+            <div className="SerImgDes">
+              사람들이 자주 묻는 질문을,
+              <br /> 손쉽게 확인하세요.
+            </div>
+            <Link to="/QAPage">
               <button className="PetInfoButton">visit now</button>
             </Link>
           </div>

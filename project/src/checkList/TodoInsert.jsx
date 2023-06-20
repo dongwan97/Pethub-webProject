@@ -21,7 +21,7 @@ const TodoInsert = ({ onInsert }) => {
   return (
     <form className="TodoInsert" onSubmit={onSubmit}>
       <input
-        placeholder="체크해야 할 건강정보가 있나요 ?"
+        placeholder="체크해야 할 건강정보를 여기에 입력해주세요 !"
         value={value}
         onChange={onChange}
       />

@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { Map,MapMarker} from 'react-kakao-maps-sdk'
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 import "./MapPage.css";
 import { startTransition } from "react";
 
 const { kakao } = window;
 
 function MapPage() {
-  const [info, setInfo] = useState()
-  const [markers, setMarkers] = useState([])
-  const [map, setMap] = useState()
+  const [info, setInfo] = useState();
+  const [markers, setMarkers] = useState([]);
+  const [map, setMap] = useState();
   const [currentCoordinate, setCurrentCoordinate] = useState(null);
 
-  useEffect(() => { // 현재 위치를 가져오는 getCurrentCoordinate 함수로 currentCoordinate 값 설정위해
+  useEffect(() => {
+    // 현재 위치를 가져오는 getCurrentCoordinate 함수로 currentCoordinate 값 설정위해
     const fetchData = async () => {
       try {
         const coordinate = await getCurrentCoordinate();
@@ -22,53 +23,57 @@ function MapPage() {
     };
 
     fetchData();
-  },[]);
-  
-  useEffect(() => {
-    if (!map || !currentCoordinate) return    // currentCoordinate 상태가 업데이트된 후에 실행되게 하기 위해
-    const ps = new kakao.maps.services.Places()
+  }, []);
 
-    var options = {   // 키워드 검색 시 사용할 options으로 location: currentCoordinate를 통해 현재 위치 주위에서 검색 가능하게
+  useEffect(() => {
+    if (!map || !currentCoordinate) return; // currentCoordinate 상태가 업데이트된 후에 실행되게 하기 위해
+    const ps = new kakao.maps.services.Places();
+
+    var options = {
+      // 키워드 검색 시 사용할 options으로 location: currentCoordinate를 통해 현재 위치 주위에서 검색 가능하게
       location: currentCoordinate,
       radius: 1800,
       sort: kakao.maps.services.SortBy.DISTANCE,
     };
 
-    ps.keywordSearch("동물병원", (data, status, _pagination) => {
-      if (status === kakao.maps.services.Status.OK) {
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        // LatLngBounds 객체에 좌표를 추가합니다
-        const bounds = new kakao.maps.LatLngBounds()
-        let markers = []
+    ps.keywordSearch(
+      "동물병원",
+      (data, status, _pagination) => {
+        if (status === kakao.maps.services.Status.OK) {
+          // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+          // LatLngBounds 객체에 좌표를 추가합니다
+          const bounds = new kakao.maps.LatLngBounds();
+          let markers = [];
 
-        for (var i = 0; i < data.length; i++) {
-          // @ts-ignore
-          markers.push({
-            position: {
-              lat: data[i].y,
-              lng: data[i].x,
-            },
-            content: {
-              place_name:data[i].place_name,
-              address_name:data[i].address_name,
-              road_address_name:data[i].road_address_name,
-              phone:data[i].phone,
-              place_url:data[i].place_url,
-            }
-          })
-          // @ts-ignore
-          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+          for (var i = 0; i < data.length; i++) {
+            // @ts-ignore
+            markers.push({
+              position: {
+                lat: data[i].y,
+                lng: data[i].x,
+              },
+              content: {
+                place_name: data[i].place_name,
+                address_name: data[i].address_name,
+                road_address_name: data[i].road_address_name,
+                phone: data[i].phone,
+                place_url: data[i].place_url,
+              },
+            });
+            // @ts-ignore
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+          }
+          setMarkers(markers);
+
+          // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+          map.setBounds(bounds);
         }
-        setMarkers(markers)
+      },
+      options
+    );
+  }, [map, currentCoordinate]);
 
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds)
-      }
-    }, options)
-
-  }, [map, currentCoordinate])
-
-  const getCurrentCoordinate = async () => {  
+  const getCurrentCoordinate = async () => {
     return new Promise((res, rej) => {
       // HTML5의 geolocaiton으로 사용할 수 있는지 확인합니다.
       if (navigator.geolocation) {
@@ -76,7 +81,7 @@ function MapPage() {
         navigator.geolocation.getCurrentPosition(function (position) {
           const lat = position.coords.latitude; // 위도
           const lon = position.coords.longitude; // 경도
-  
+
           const coordinate = new kakao.maps.LatLng(lat, lon);
           res(coordinate);
         });
@@ -84,58 +89,112 @@ function MapPage() {
         rej(new Error("현재 위치를 불러올 수 없습니다."));
       }
     });
-  };  
-
+  };
 
   return (
     <div className="whole_container" style={{}}>
-      <div style={{width:"22%", height:"90%", margin:"30px 30px 0px 30px", zIndex:"100",position:"absolute"}}>
-
-        <div style={{padding:"5px 0px 5px 0px",background:"rgba(255, 255, 255, 1)", textAlign:"center",borderRadius:"10px 10px 0px 0px",borderBottom:"2px solid"}}><h2 style={{margin:"0"}}>동물병원 목록</h2></div>
-
-        <div style={{height:"85%", overflow:"scroll", backgroundColor:"rgba(255, 255, 255, 1)",borderRadius:"0px 0px 10px 10px"}}>
-        {markers.map((marker) => (
-          <div className="map-list" style={{borderBottom:"1px solid gray", marginLeft:"10px"}} onClick={() => setInfo(marker)}>
-            <h3>{marker.content.place_name}</h3>
-            <p className="map-link" onClick={() => window.open(`${marker.content.place_url}`,"_blank")} style={{cursor:"pointer", color:"#3d75cc"}}>{marker.content.place_url}</p>
-            <p>{marker.content.address_name}</p>
-            <p style={{color:"#8a8a8a",padding:"0px 0px 0px 26px", backgroundImage:`url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png")`, backgroundRepeat:"no-repeat"}}> {marker.content.road_address_name}</p>
-            <p style={{color:"#009900"}}>{marker.content.phone}</p>
-            </div>
-        ))}
+      <div
+        style={{
+          width: "22%",
+          height: "90%",
+          margin: "30px 30px 0px 30px",
+          zIndex: "100",
+          position: "absolute",
+        }}
+      >
+        <div
+          style={{
+            padding: "5px 0px 5px 0px",
+            background: "rgba(255, 255, 255, 1)",
+            textAlign: "center",
+            borderRadius: "10px 10px 0px 0px",
+            borderBottom: "2px solid",
+          }}
+        >
+          <h2 style={{ margin: "0" }}>동물병원 목록</h2>
         </div>
 
+        <div
+          style={{
+            height: "85%",
+            overflow: "scroll",
+            backgroundColor: "rgba(255, 255, 255, 1)",
+            borderRadius: "0px 0px 10px 10px",
+          }}
+        >
+          {markers.map((marker) => (
+            <div
+              className="map-list"
+              style={{ borderBottom: "1px solid gray", marginLeft: "10px" }}
+              onClick={() => setInfo(marker)}
+            >
+              <h3>{marker.content.place_name}</h3>
+              <p
+                className="map-link"
+                onClick={() =>
+                  window.open(`${marker.content.place_url}`, "_blank")
+                }
+                style={{ cursor: "pointer", color: "#3d75cc" }}
+              >
+                {marker.content.place_url}
+              </p>
+              <p>{marker.content.address_name}</p>
+              <p
+                style={{
+                  color: "#8a8a8a",
+                  padding: "0px 0px 0px 26px",
+                  backgroundImage: `url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png")`,
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                {" "}
+                {marker.content.road_address_name}
+              </p>
+              <p style={{ color: "#009900" }}>{marker.content.phone}</p>
+            </div>
+          ))}
+        </div>
       </div>
-        
-      <div style={{width: "100%", height: "100%", zIndex:"10",position:"absolute"}}>
-      <Map // 로드뷰를 표시할 Container
-        center={{
-          lat: 37.566826,
-          lng: 126.9786567,
-        }}
+
+      <div
         style={{
           width: "100%",
           height: "100%",
-          marginLeft:"0",
+          zIndex: "10",
+          position: "absolute",
         }}
-        level={3}
-        onCreate={setMap}
       >
-        {markers.map((marker) => (
-          <MapMarker
-            key={`marker-${marker.content.place_name}-${marker.position.lat},${marker.position.lng}`}
-            position={marker.position}
-            onClick={() => setInfo(marker)}
-          >
-            {info &&info.content.place_name === marker.content.place_name && (
-              <div style={{color:"#000"}}>{marker.content.place_name}</div>
-            )}
-          </MapMarker>
-        ))}
-      </Map>
+        <Map // 로드뷰를 표시할 Container
+          center={{
+            lat: 37.566826,
+            lng: 126.9786567,
+          }}
+          style={{
+            width: "100%",
+            height: "100%",
+            marginLeft: "0",
+          }}
+          level={3}
+          onCreate={setMap}
+        >
+          {markers.map((marker) => (
+            <MapMarker
+              key={`marker-${marker.content.place_name}-${marker.position.lat},${marker.position.lng}`}
+              position={marker.position}
+              onClick={() => setInfo(marker)}
+            >
+              {info &&
+                info.content.place_name === marker.content.place_name && (
+                  <div style={{ color: "#000" }}>
+                    {marker.content.place_name}
+                  </div>
+                )}
+            </MapMarker>
+          ))}
+        </Map>
       </div>
     </div>
-  )
+  );
 }
 
 export default MapPage;

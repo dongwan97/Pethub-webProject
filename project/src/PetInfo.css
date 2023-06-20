@@ -1,5 +1,5 @@
 .PetProfile {
-  width: 100%;
+  width: 75%;
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
   font-weight: bold;
 
   top: 101px;
-  left: 26%;
+  left: 25%;
   position: relative;
 }
 
@@ -69,7 +69,7 @@
   width: 100px;
   height: 30px;
   color: white;
-  font-size: 10px;
+  font-size: 13px;
   background-color: rgb(48, 47, 81);
   cursor: pointer;
   border: none;
@@ -218,6 +218,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 100px;
 }
 
 .main_5_title {
