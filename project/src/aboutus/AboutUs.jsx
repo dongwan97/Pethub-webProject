@@ -6,6 +6,7 @@ import 기획서4 from "../assets/기획서이미지/기획서4.png";
 import 기획서5 from "../assets/기획서이미지/기획서5.png";
 import 기획서6 from "../assets/기획서이미지/기획서6.png";
 import 기획서7 from "../assets/기획서이미지/기획서7.png";
+import 기획서8 from "../assets/기획서이미지/기획서8.png";
 import 팀원1 from "../assets/member1.jpg";
 import 팀원2 from "../assets/member2.jpg";
 
@@ -65,6 +66,9 @@ function AboutUs() {
               안녕하세요! 프로그래밍을 통해 사람들의 더 나은 일상을 만들고 싶은
               예비 개발자입니다!!
             </p>
+            <p>
+             저는 이번 프로젝트에서 랜딩페이지의 페이지별 기능소개 및 애니메이션 추가, 동물병원페이지, 기획서페이지를 담당했습니다.
+            </p>
           </div>
           <div className="member2">
             <img className="member2_image" src={팀원2} />
@@ -84,6 +88,7 @@ function AboutUs() {
       <img className="proposal-image" src={기획서5} />
       <img className="proposal-image" src={기획서6} />
       <img className="proposal-image" src={기획서7} />
+      <img className="proposal-image" src={기획서8} />
     </div>
   );
 }
