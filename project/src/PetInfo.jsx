@@ -174,7 +174,9 @@ function PetInfo() {
           )}
 
           <div id="main_2">
-            <div className="main_2_title">놓치면 안되는 건강정보</div>
+            <div className="main_2_title">
+              체크리스트를 통해 건강사항을 체크하세요
+            </div>
             <div id="main_2_content">
               <div className="main_2_p">
                 <div>
@@ -191,7 +193,9 @@ function PetInfo() {
             </div>
           </div>
           <div className="main_3">
-            <div className="main_3_title">강아지의 몸무게를 체크하세요!</div>
+            <div className="main_3_title">
+              강아지의 몸무게를 한눈에 보여드릴게요
+            </div>
             <div className="main_3_p">
               사람과 강아지의 비만에 따른 질병은 큰 차이가 없습니다.
               <br />
@@ -240,9 +244,6 @@ function PetInfo() {
             </div>
           </div>
 
-          <div id="main_4">
-            <h3 style={{ color: "black" }}>사진이 들어갈거임</h3>
-          </div>
           <div id="main_5">
             <div className="main_5_title">댕댕 띵언</div>
             <RandomPhrase />

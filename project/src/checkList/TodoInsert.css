@@ -9,14 +9,14 @@ input {
   color: white;
   font-size: 15px;
   background-color: rgb(58, 84, 180);
-
+  padding-left: 10px;
   width: 95%;
   height: 50px;
 }
 
 input::placeholder {
   padding-left: 10px;
-  color: rgb(127, 126, 126);
+  color: rgb(230, 230, 230);
 }
 
 .TodoInsertButton {
