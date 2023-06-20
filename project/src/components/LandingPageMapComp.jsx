@@ -43,7 +43,7 @@ function PageInfo4() {
           <h1>동물병원</h1>
           <h2>근처의 동물병원을 <br/> 미리 알아두세요</h2>
         </div>
-        <div>
+        <div className='section3-description-comment'>
           <p>주위의 동물병원을 <br/> 한 눈에 보이는 지도로 알아보세요!</p>
         </div>
 

@@ -7,7 +7,7 @@ import 개8 from "./assets/개8.png";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import LandingPageMyPetComp from "./components/LandingPageMyPetComp";
-import LandingPagePetDiaryComp from "./components/LandingPagePetDiaryComp";
+import LandingPageQuestionComp from "./components/LandingPageQuestionComp";
 import LandingPageMapComp from "./components/LandingPageMapComp";
 
 function LandingPage() {
@@ -96,7 +96,7 @@ function LandingPage() {
         </div>
       </div>
       <LandingPageMyPetComp />
-      <LandingPagePetDiaryComp />
+      <LandingPageQuestionComp />
       <LandingPageMapComp />
     </div>
   );
