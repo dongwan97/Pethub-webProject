@@ -5,14 +5,41 @@ import 개6 from "./assets/개6.png";
 import 개7 from "./assets/개7.png";
 import 개8 from "./assets/개8.png";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import LandingPageMyPetComp from "./components/LandingPageMyPetComp";
 import LandingPageQuestionComp from "./components/LandingPageQuestionComp";
 import LandingPageMapComp from "./components/LandingPageMapComp";
 
 function LandingPage() {
+  const sectionRef = useRef(null);
+  const descriptionRefs = useRef([]);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const options = {
+      threshold: 0.7, // Trigger the callback when the section is 70% visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          target.style.opacity = 1; // Fade in the element
+          target.style.transform = 'translateY(0)'; // Reset translateY transformation
+
+          observer.unobserve(target); // Stop observing the element once it's visible
+        }
+      });
+    }, options);
+
+    descriptionRefs.current.forEach((descriptionRef) => {
+      observer.observe(descriptionRef);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -37,8 +64,8 @@ function LandingPage() {
           />
         </Link>
       </div>
-      <div className="PContainer">
-        <div className="servicesP">
+      <div className="PContainer" ref={sectionRef}>
+        <div className="servicesP" ref={(el) => (descriptionRefs.current[0] = el)} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }}>
           <div className="servicesP1">
             <div>강아지에 대한 정보부터 건강관리까지,</div>
             <div>나의 강아지의 모든 정보를 이제 한번에 관리하세요</div>
@@ -51,9 +78,9 @@ function LandingPage() {
       </div>
 
       <div className="Services">
-        <div className="ServicesTitle">Services</div>
-        <div className="ServicesImgContainer">
-          <div className="ServicesDetail">
+        <div className="ServicesTitle" ref={(el) => (descriptionRefs.current[1] = el)} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }}>Services</div>
+        <div className="ServicesImgContainer" ref={(el) => (descriptionRefs.current[2] = el)} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }}>
+          <div className="ServicesDetail" >
             <Link to="/PetInfo">
               <img src={개6} className="ServicesImg" />
             </Link>
