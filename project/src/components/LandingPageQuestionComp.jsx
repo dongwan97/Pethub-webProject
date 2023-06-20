@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import './PageInfo2.css';
-import image1 from '../assets/1.png';
-import image2 from '../assets/2.png';
+import image4 from '../assets/4.png';
 
-function LandingPagePetDiaryComp() {
+function LandingPageQuestionComp() {
   const sectionRef = useRef(null);
   const descriptionRef = useRef(null);
   const imageRefs = useRef([]);
@@ -38,19 +37,18 @@ function LandingPagePetDiaryComp() {
   }, []);
 
   return (
-    <div className="home-main-section1" ref={sectionRef}>
+    <div className="home-main-section3" ref={sectionRef}>
       <div className="section1-description" ref={descriptionRef} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }}>
-        <h1>펫 다이어리</h1>
-        <h2>펫과의 추억을 <br/>다이어리로</h2>
-        <p>펫의 정보를 입력하고 <br/> 체크리스트를 만들어 건강관리를 시작해보세요!</p>
+        <h1>질문게시판</h1>
+        <h2>자주 묻는 질문,<br/>답변을 한눈에</h2>
+        <p>평소 궁금했던 질문들에 대해<br/>답변을 확인해보세요!</p>
       </div>
 
-      <div className="section1-image">
-        <div className='first-image'><img ref={(el) => (imageRefs.current[0] = el)} src={image1} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }} /></div>
-        <div className='second-image'><img ref={(el) => (imageRefs.current[1] = el)} src={image2} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }} /></div>
+      <div className="section2-image">
+        <div className='first-image-2'><img ref={(el) => (imageRefs.current[0] = el)} src={image4} style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 1s, transform 1s' }} /></div>
       </div>
     </div>
   );
 }
 
-export default LandingPagePetDiaryComp;
+export default LandingPageQuestionComp;
