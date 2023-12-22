@@ -1,6 +1,9 @@
 # WebProgramming-Project <br/>
-## 1. 팀명 : 펫허브
+## 강아지 건강관리 플랫폼 PET-HUB
 ![landing](https://github.com/dongwan97/Pethub-webProject/assets/122766043/52b45423-3e85-4086-99fc-8cfe2c75afb2)
+
+## 시연영상
+[시연영상 바로가기](https://youtu.be/DgOxU_bJgl4)  
 
 ## 2. 팀원소개
 학과|학번|이름|
